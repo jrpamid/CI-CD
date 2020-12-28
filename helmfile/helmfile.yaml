@@ -1,0 +1,35 @@
+---
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+
+releases:
+  - name: myapp1
+    namespace: web-dev
+    chart: apps/myapp-chart
+    version: 0.1.0
+    labels:
+      component: api
+      env: dev
+    hooks:
+      -  events: ["prepare"]
+         showlogs: true
+         command: "scripts/create_ns.sh"
+         args: ["web-dev"]
+         
+environments:
+  int:
+    values:
+      - env-vars/int/values.yaml
+    secrets:
+      - env-vars/int/secrets.yaml
+  uat:
+    values:
+      - env-vars/uat/values.yaml
+    secrets:
+      - env-vars/uat/secrets.yaml
+  prod:
+    values:
+      - env-vars/prod/values.yaml
+    secrets:
+      - env-vars/prod/secrets.yaml

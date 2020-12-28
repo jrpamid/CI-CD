@@ -1,0 +1,19 @@
+apiVersion: v1
+clusters: null
+contexts: null
+current-context: ""
+kind: Config
+preferences: {}
+users:
+- name: developer
+  user:
+    password: 
+    username: 
+- name: experimenter
+  user:
+    password: 
+    username: 
+- name: releaser
+  user:
+    password: 
+    username: 
